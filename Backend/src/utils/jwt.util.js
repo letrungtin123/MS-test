@@ -10,7 +10,7 @@ export const handleGenerateToken = async ({
   secretKey = process.env.SECRECT_KEY,
   expiresIn = "1h",
 }) => {
-  const token = jwt.sign(payload, secretKey, { expiresIn });
+  const token = jwt.sign(payload, secretKey, {expiresIn} );
 
   return token;
 };
@@ -24,3 +24,5 @@ export const handleVerifyToken = async ({
 
   return decoded;
 };
+
+

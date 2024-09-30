@@ -40,6 +40,10 @@ app.listen(port, () => {
   console.log(`🚀 ~Server is running on port ${port}`);
 });
 
+
+//mảng ban đầu
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+//             0  1  2  3  4  5  6  7  8
 // const Dev = 123 + '1'
 // console.log("🚀 ~ Dev:", Dev)
 
@@ -55,10 +59,6 @@ app.listen(port, () => {
 // hello =false
 // console.log("🚀 ~ hello:", hello)
 // console.log(1 === '1')
-
-//mảng ban đầu
-let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-//             0  1  2  3  4  5  6  7  8
 
 //Thêm phần tử ở cuối mảng
 //push()
