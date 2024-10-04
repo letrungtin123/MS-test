@@ -5,7 +5,7 @@ import {
   sendEmailValidation,
 } from "../validations/auth.validation.js";
 
-import { HTTP_STATUS } from "../common/http-status.common.js";
+import { HTTP_STATUS } from "../common/http-satus.common.js";
 
 export const validationRegiser = async (req, res, next) => {
   const body = req.body;

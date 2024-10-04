@@ -7,7 +7,7 @@ dotenv.config();
 //generate token
 export const handleGenerateToken = async ({
   payload,
-  secretKey = process.env.SECRECT_KEY,
+  secretKey = process.env.SECRET_KEY,
   expiresIn = "1h",
 }) => {
   const token = jwt.sign(payload, secretKey, {expiresIn} );
