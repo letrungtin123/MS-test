@@ -1,6 +1,15 @@
+import {
+  loginController,
+  registerController,
+  sendEmailController,
+} from "../controllers/auth.controller.js";
+import {
+  validationLogin,
+  validationRegiser,
+  validationSendEmail,
+} from "../middlewares/auth.middleware.js";
+
 import express from "express";
-import { registerController } from "../controllers/auth.controller.js";
-import { validationRegiser } from "../middlewares/auth.middleware.js";
 import { wrapRequestHandler } from "../utils/handlers.util.js";
 
 const router = express.Router();
@@ -12,5 +21,15 @@ router.post(
   wrapRequestHandler(registerController),
 );
 
-export default router;
+router.post(
+  "/login",
+  wrapRequestHandler(validationLogin),
+  wrapRequestHandler(loginController),
+);
 
+router.post(
+  "/send-email",
+  wrapRequestHandler(validationSendEmail),
+  wrapRequestHandler(sendEmailController),
+);
+export default router;
