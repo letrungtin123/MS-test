@@ -1,6 +1,10 @@
 import * as dotenv from "dotenv";
 
-import { checkEmailExist, createUser } from "../services/auth.service.js";
+import {
+  checkEmailExist,
+  createUser,
+  updatePassword,
+} from "../services/auth.service.js";
 import {
   handleComparePassword,
   handleHashPassword,
@@ -115,4 +119,35 @@ export const sendEmailController = async (req, res) => {
       link,
     });
   }
+};
+
+//reset password
+export const resetPasswordController = async (req, res) => {
+  const { newPassword } = req.forgotPassword;
+  const { email } = req.user;
+
+  //check email
+  const user = await checkEmailExist(email);
+  if (!user) {
+    return res.status(HTTP_STATUS.UNAUTHORIZED).json({
+      message: "Email is not existed!",
+      success: false,
+    });
+  }
+  //hash password
+  const hashPassword = await handleHashPassword({ password: newPassword });
+
+  // update password
+  const result = await updatePassword(user._id, hashPassword);
+  if (!result) {
+    return res.status(HTTP_STATUS.BAD_REQUEST).json({
+      message: "Update password failed!",
+      success: false,
+    });
+  }
+
+  return res.status(HTTP_STATUS.OK).json({
+    message: "Update password successfully!",
+    success: true,
+  });
 };

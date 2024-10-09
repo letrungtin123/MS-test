@@ -68,5 +68,6 @@ export const validationResetPassword = async (req, res, next) => {
       .json({ message: errors, success: false });
   }
   req.forgotPassword = body;
+
   next();
 };

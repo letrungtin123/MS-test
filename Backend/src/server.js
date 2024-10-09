@@ -40,7 +40,16 @@ app.listen(port, () => {
   console.log(`🚀 ~Server is running on port ${port}`);
 });
 
-
+app.use(async (req, res) => {
+  try {
+      await func(req, res, next); // gọi hàm xử lý request
+  } catch (error) {
+      return res.status(500).json({
+          message: error.message,
+          success: false,
+      });
+  }
+});
 //mảng ban đầu
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 //             0  1  2  3  4  5  6  7  8
