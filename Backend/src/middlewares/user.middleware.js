@@ -1,6 +1,8 @@
-import { HTTP_STATUS } from '../common/http-status.common.js';
+
+import { HTTP_STATUS } from '../common/http-satus.common.js';
 import { changePasswordValidation } from '../validations/auth.validation.js';
-import { updateProfileValidation } from '../validations/user.validattion.js';
+import { updateProfileValidation } from '../validations/user.validation.js';
+
 
 export const validationChangePassword = (req, res, next) => {
   const body = req.body;
